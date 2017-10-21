@@ -1,6 +1,78 @@
+Estado json
+    nomeEstado      Text
+    sgEstado        Text
+    deriving Show
+Cidade json
+    nomeCidade      Text
+    estadoId        EstadoId    
+    deriving Show
+Bairro json
+    nomeBairro      Text
+    cidadeId        CidadeId
+    deriving Show
+Endereco json
+    bairro          BairroId
+    rua             Text
+    numero          Text
+    cep             Text
+    deriving Show
+Cartao json
+    numeroCartao    Text
+    validade        Text
+    codigoSeguranca Text
+    nomeImpresso    Text
+    deriving Show
 Cliente json
     nome            Text
+    cartaoId        CartaoId
     nacionalidade   Text
-    cpf             Text 
-    salario         Double
+    cpfCliente      Text
+    rg              Text
+    sexo            Text
+    email           Text
+    cnh             Text
+    nregistro       Text
+    validade        Text
+    estadoEmissor   Text
+    senha           Text
+    deriving Show
+Carro json
+    placa           Text
+    modelo          Text
+    ano             Text
+    tanqueCheio     Bool
+    km              Text
+    vlDiaria        Text
+    alugado         Bool
+    deriving Show
+Garagem json
+    carroId         CarroId
+    qtd             Text
+    deriving Show
+Corretor json
+    cpfCorretor     Text
+    nome            Text
+    telefone        Text
+    endereco        Text
+    email           Text
+    deriving Show
+Seguro json
+    descSeguro      Text
+    vlSeguro        Text
+    deriving Show
+Locadora json
+    telefone        Text
+    email           Text
+    unidade         UnidadeId
+    deriving Show
+Unidade json
+    endereco        EnderecoId
+    deriving Show
+Locacao json
+    corretorId      CorretorId
+    carroId         CarroId
+    dataSaida       Text
+    dataRetorno     Text
+    seguroId        SeguroId
+    clienteId       ClienteId
     deriving Show
