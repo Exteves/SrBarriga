@@ -7,3 +7,19 @@
 /cliente/#ClienteId/buscar BuscarR GET
 /cliente/#ClienteId/apagar ApagarR DELETE
 /cliente/#ClienteId/altera AlteraR PUT
+
+/carro/#CarroId/inserir CarroInsereR    POST
+/carro/#CarroId/buscar  CarroBuscarR    GET
+/carro/#CarroId/apagar  CarroApagarR    DELETE
+/carro/#CarroId/alterar CarroAlterarR   PUT
+
+/cartao/#CartaoId/inserir   CartaoInsereR   POST
+/cartao/#CartaoId/buscar    CartaoBuscarR   GET
+/cartao/#CartaoId/apagar    CartaoApagarR   DELETE
+/cartao/#CartaoId/alterar   CartaoAlterarR  PUT
+
+/corretor/#CorretorId/inserir   CorretorInsereR     POST
+/corretor/#CorretorId/buscar    CorretorBuscarR     GET
+/corretor/#CorretorId/apagar    CorretorApagarR     DELETE
+/corretor/#CorretorId/alterar   CorretorAlterarR    PUT
+
