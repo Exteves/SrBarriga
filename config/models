@@ -1,10 +1,6 @@
-Estado json
-    nomeEstado      Text
-    sgEstado        Text
-    deriving Show
 Cidade json
     nomeCidade      Text
-    estadoId        EstadoId    
+    estado        Estado    
     deriving Show
 Bairro json
     nomeBairro      Text
@@ -47,6 +43,7 @@ Carro json
     deriving Show
 Garagem json
     carroId         CarroId
+    unidadeId       UnidadeId
     qtd             Text
     deriving Show
 Corretor json
@@ -63,16 +60,16 @@ Seguro json
 Locadora json
     telefone        Text
     email           Text
-    unidade         UnidadeId
     deriving Show
 Unidade json
     endereco        EnderecoId
+    locadora        LocadoraId
     deriving Show
 Locacao json
     corretorId      CorretorId
     carroId         CarroId
-    dataSaida       Text
-    dataRetorno     Text
+    dataSaida       UTCTime
+    dataRetorno     UTCTime
     seguroId        SeguroId
     clienteId       ClienteId
     deriving Show

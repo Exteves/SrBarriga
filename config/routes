@@ -3,23 +3,45 @@
 /favicon.ico FaviconR                       GET
 /robots.txt RobotsR                         GET
 
-/cliente ClienteInsereR POST
+/cliente                    ClienteInsereR POST
 /cliente/#ClienteId/buscar BuscarR GET
 /cliente/#ClienteId/apagar ApagarR DELETE
 /cliente/#ClienteId/altera AlteraR PUT
 
-/carro/#CarroId/inserir CarroInsereR    POST
+/carro/inserir          CarroInsereR    POST
 /carro/#CarroId/buscar  CarroBuscarR    GET
 /carro/#CarroId/apagar  CarroApagarR    DELETE
 /carro/#CarroId/alterar CarroAlterarR   PUT
 
-/cartao/#CartaoId/inserir   CartaoInsereR   POST
+/cartao/inserir             CartaoInsereR   POST
 /cartao/#CartaoId/buscar    CartaoBuscarR   GET
 /cartao/#CartaoId/apagar    CartaoApagarR   DELETE
 /cartao/#CartaoId/alterar   CartaoAlterarR  PUT
 
-/corretor/#CorretorId/inserir   CorretorInsereR     POST
+/corretor/inserir               CorretorInsereR     POST
 /corretor/#CorretorId/buscar    CorretorBuscarR     GET
 /corretor/#CorretorId/apagar    CorretorApagarR     DELETE
 /corretor/#CorretorId/alterar   CorretorAlterarR    PUT
+
+/unidade/#LocadoraId/inserir    UnidadeInsereR      POST
+/unidade/#UnidadeId/buscar      UnidadeBuscarR      GET
+/unidade/#UnidadeId/apagar      UnidadeApagarR      DELETE
+/unidade/#UnidadeId/alterar     UnidadeAlterarR     PUT
+
+/cep/#Text/buscar               CepBuscarR          GET
+/endereco/#EnderecoId/apagar    EnderecoApagarR     DELETE
+/endereco/#EnderecoId/alterar   EnderecoAlterarR    PUT
+
+/seguro/inserir                 SeguroInsereR       POST
+/seguro/buscar                  SeguroBuscarR       GET
+/seguro/#SeguroId/deletar       SeguroDeletarR      DELETE
+
+/locacao/inserir                        LocacaoInsereR          POST
+/locacao/carro/#CarroId/buscar          LocacaoCarroBuscarR     GET
+/locacao/cliente/#ClienteId/buscar      LocacaoClienteBuscarR   GET
+/locacao/cartao/#CartaoId/buscar        LocacaoCartaoBuscarR    GET
+/locacao/corretor/#CorretorId/buscar    LocacaoCorretorBuscarR  GET
+/locacao/saida/#UTCTime/buscar          LocacaoSaidaBuscarR     GET
+/locacao/retorno/#UTCTime/buscar        LocacaoRetornoBuscarR   GET
+
 

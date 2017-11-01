@@ -3,7 +3,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
-module Handler.Carro where
+module Handler.Locacao where
 
 import Import
 import Network.HTTP.Types.Status
