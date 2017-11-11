@@ -9,8 +9,6 @@ import Import
 import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
-
-
 postClienteInsereR :: Handler Value
 postClienteInsereR = do
     cliente <- requireJsonBody :: Handler Cliente
@@ -23,12 +21,7 @@ getBuscarR :: ClienteId -> Handler Value
 getBuscarR cid = do
     cliente <- runDB $ get404 cid
     sendStatusJSON ok200 (object ["resp" .= (toJSON cliente)])
-    
-deleteApagarR :: ClienteId -> Handler Value
-deleteApagarR cid = do
-    _ <- runDB $ get404 cid
-    runDB $ delete cid
-    sendStatusJSON noContent204 (object ["resp" .= (fromSqlKey cid)])
+
 
 putAlteraR :: ClienteId -> Handler Value
 putAlteraR cid = do
@@ -37,3 +30,9 @@ putAlteraR cid = do
     runDB $ replace cid novoCliente
     sendStatusJSON noContent204 (object ["resp" .= (fromSqlKey cid)])
     
+patchAlteraNomeR :: ClienteId -> Handler Value
+patchAlteraNomeR cid = do
+    _ <- runDB $ get404 cid
+    nome <- requireJsonBody :: Handler Text
+    runDB $ update cid [ClienteNome =. nome]
+    sendStatusJSON noContent204 (object ["resp" .= (fromSqlKey cid)])

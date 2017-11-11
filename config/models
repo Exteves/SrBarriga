@@ -1,6 +1,15 @@
+Pais json
+    nomePais        Text
+    sgPais          Text
+    deriving Show
+Estado json
+    nomeEstado      Text
+    sg              Text
+    pais            PaisId
+    deriving Show
 Cidade json
     nomeCidade      Text
-    estado        Estado    
+    estadoId        EstadoId    
     deriving Show
 Bairro json
     nomeBairro      Text

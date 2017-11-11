@@ -9,14 +9,8 @@ import Import
 import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
-postCarroInsereR :: Handler Value
-postCarroInsereR = undefined
+postSeguroInsereR :: Handler Value
+postSeguroInsereR = undefined
 
-getCarroBuscarR :: CarroId -> Handler Value
-getCarroBuscarR = undefined
-
-deleteCarroApagarR :: CarroId -> Handler Value
-deleteCarroApagarR = undefined
-
-putCarroAlterarR :: CarroId -> Handler Value
-putCarroAlterarR = undefined
+getSeguroBuscarR :: SeguroId -> Handler Value
+getSeguroBuscarR = undefined

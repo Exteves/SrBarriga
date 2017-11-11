@@ -8,6 +8,7 @@
 module Foundation where
 
 import Import.NoFoundation
+import Prelude (reads)
 import Database.Persist.Sql (ConnectionPool, runSqlPool)
 import Yesod.Core.Types     (Logger)
 
@@ -35,3 +36,9 @@ instance RenderMessage App FormMessage where
 
 instance HasHttpManager App where
     getHttpManager = appHttpManager
+
+instance PathPiece UTCTime where
+    toPathPiece = pack.show
+    fromPathPiece s = case reads $ unpack s of
+            ((i, _):_) -> Just i
+            [] -> Nothing

@@ -10,13 +10,16 @@ import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
 postCarroInsereR :: Handler Value
-postCarroInsereR = undefined
+postCarroInsereR = do
+    carro <- requireJsonBody :: Handler Cliente
+    cid <- runDB $ insert carro
+    sendStatusJSON created201 (object ["resp" .= (fromSqlKey cid)])
+
+--postCarroInsereR :: Handler Value
+--postCarroInsereR = undefined
 
 getCarroBuscarR :: CarroId -> Handler Value
 getCarroBuscarR = undefined
-
-deleteCarroApagarR :: CarroId -> Handler Value
-deleteCarroApagarR = undefined
 
 putCarroAlterarR :: CarroId -> Handler Value
 putCarroAlterarR = undefined
