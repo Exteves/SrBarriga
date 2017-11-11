@@ -15,9 +15,6 @@ postCarroInsereR = do
     cid <- runDB $ insert carro
     sendStatusJSON created201 (object ["resp" .= (fromSqlKey cid)])
 
---postCarroInsereR :: Handler Value
---postCarroInsereR = undefined
-
 getCarroBuscarR :: CarroId -> Handler Value
 getCarroBuscarR = undefined
 

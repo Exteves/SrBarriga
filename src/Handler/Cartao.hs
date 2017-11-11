@@ -10,8 +10,11 @@ import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
 postCartaoInsereR :: Handler Value
-postCartaoInsereR = undefined
-
+postCartaoInsereR = do
+    cartao <- requireJsonBody :: Handler Cartao
+    cid <- runDB $ insert cartao
+    sendStatusJSON created201 (object ["resp" .= (fromSqlKey cid)])
+    
 getCartaoBuscarR :: CartaoId -> Handler Value
 getCartaoBuscarR = undefined
 
