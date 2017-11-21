@@ -11,12 +11,14 @@ import Database.Persist.Postgresql
 
 postCarroInsereR :: Handler Value
 postCarroInsereR = do
-    carro <- requireJsonBody :: Handler Cliente
-    cid <- runDB $ insert carro
-    sendStatusJSON created201 (object ["resp" .= (fromSqlKey cid)])
+    carro <- requireJsonBody :: Handler Carro
+    carid <- runDB $ insert carro
+    sendStatusJSON created201 (object ["resp" .= (fromSqlKey carid)])
 
 getCarroBuscarR :: CarroId -> Handler Value
-getCarroBuscarR = undefined
+getCarroBuscarR carid = do
+    carro <- runDB $ get404 carid
+    sendStatusJSON ok200 (object ["resp" .= (toJSON carro)])
 
 putCarroAlterarR :: CarroId -> Handler Value
 putCarroAlterarR = undefined

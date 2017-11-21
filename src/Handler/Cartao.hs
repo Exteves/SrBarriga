@@ -12,11 +12,13 @@ import Database.Persist.Postgresql
 postCartaoInsereR :: Handler Value
 postCartaoInsereR = do
     cartao <- requireJsonBody :: Handler Cartao
-    cid <- runDB $ insert cartao
-    sendStatusJSON created201 (object ["resp" .= (fromSqlKey cid)])
+    cardid <- runDB $ insert cartao
+    sendStatusJSON created201 (object ["resp" .= (fromSqlKey cardid)])
     
 getCartaoBuscarR :: CartaoId -> Handler Value
-getCartaoBuscarR = undefined
+getCartaoBuscarR cardid = do
+    cartao <- runDB $ get404 cardid
+    sendStatusJSON ok200 (object ["resp" .= (toJSON cartao)])
 
 putCartaoAlterarR :: CartaoId -> Handler Value
 putCartaoAlterarR = undefined
