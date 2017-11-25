@@ -10,10 +10,15 @@ import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
 postCorretorInsereR :: Handler Value
-postCorretorInsereR = undefined
+postCorretorInsereR = do
+    corretor <- requireJsonBody :: Handler Corretor
+    corid <- runDB $ insert corretor
+    sendStatusJSON created201 (object ["resp" .= (fromSqlKey corid)])
 
 getCorretorBuscarR :: CorretorId -> Handler Value
-getCorretorBuscarR = undefined
+getCorretorBuscarR corid = do
+    corretor <- runDB $ get404 corid
+    sendStatusJSON ok200 (object ["resp" .= (toJSON corretor)])
 
 putCorretorAlterarR :: CorretorId -> Handler Value
 putCorretorAlterarR = undefined
