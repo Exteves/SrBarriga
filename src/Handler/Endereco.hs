@@ -13,10 +13,15 @@ getCepBuscarR :: Text -> Handler Value
 getCepBuscarR = undefined
 
 postEnderecoInsereR :: Handler Value
-postEnderecoInsereR = undefined
+postEnderecoInsereR = do
+    endereco <- requireJsonBody :: Handler Endereco
+    cepid <- runDB $ insert endereco
+    sendStatusJSON created201 (object ["resp" .= (fromSqlKey cepid)])
 
 getEnderecoBuscarR :: EnderecoId -> Handler Value
-getEnderecoBuscarR = undefined
+getEnderecoBuscarR cepid = do
+    endereco <- runDB $ get404 cepid
+    sendStatusJSON ok200 (object ["resp" .= (toJSON endereco)])
 
 putEnderecoAlterarR :: EnderecoId -> Handler Value
 putEnderecoAlterarR = undefined
