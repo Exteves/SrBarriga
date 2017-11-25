@@ -21,4 +21,8 @@ getCarroBuscarR carid = do
     sendStatusJSON ok200 (object ["resp" .= (toJSON carro)])
 
 putCarroAlterarR :: CarroId -> Handler Value
-putCarroAlterarR = undefined
+putCarroAlterarR carid = do
+    _ <- runDB $ get404 carid
+    novoCarro <- requireJsonBody :: Handler Carro
+    runDB $ replace carid novoCarro
+    sendStatusJSON noContent204 (object ["resp" .= (fromSqlKey carid)])
