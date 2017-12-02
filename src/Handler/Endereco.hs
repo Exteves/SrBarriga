@@ -10,18 +10,24 @@ import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
 getCepBuscarR :: Text -> Handler Value
-getCepBuscarR = undefined
+getCepBuscarR cep = do
+    cepList <- runDB $ selectList [EnderecoCep==.cep][]
+    sendStatusJSON ok200(object ["resp".= (toJSON cepList)])
 
 postEnderecoInsereR :: Handler Value
 postEnderecoInsereR = do
     endereco <- requireJsonBody :: Handler Endereco
-    cepid <- runDB $ insert endereco
-    sendStatusJSON created201 (object ["resp" .= (fromSqlKey cepid)])
+    cep <- runDB $ insert endereco
+    sendStatusJSON created201 (object ["resp" .= (fromSqlKey cep)])
 
 getEnderecoBuscarR :: EnderecoId -> Handler Value
-getEnderecoBuscarR cepid = do
-    endereco <- runDB $ get404 cepid
+getEnderecoBuscarR cep = do
+    endereco <- runDB $ get404 cep
     sendStatusJSON ok200 (object ["resp" .= (toJSON endereco)])
 
 putEnderecoAlterarR :: EnderecoId -> Handler Value
-putEnderecoAlterarR = undefined
+putEnderecoAlterarR cep = do
+    _ <- runDB $ get404 cep
+    novoEndereco <- requireJsonBody :: Handler Endereco
+    runDB $ replace cep novoEndereco
+    sendStatusJSON noContent204 (object ["resp" .= (fromSqlKey cep)])
