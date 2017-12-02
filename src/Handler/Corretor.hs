@@ -21,4 +21,8 @@ getCorretorBuscarR corid = do
     sendStatusJSON ok200 (object ["resp" .= (toJSON corretor)])
 
 putCorretorAlterarR :: CorretorId -> Handler Value
-putCorretorAlterarR = undefined
+putCorretorAlterarR corid = do
+    _ <- runDB $ get404 corid
+    novoCorretor <- requireJsonBody :: Handler Corretor
+    runDB $ replace corid novoCorretor
+    sendStatusJSON noContent204 (object ["resp" .= (fromSqlKey corid)])
