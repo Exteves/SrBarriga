@@ -12,6 +12,7 @@ import Database.Persist.Postgresql
 postLocacaoInsereR :: Handler Value
 postLocacaoInsereR = do
     locacao <- requireJsonBody :: Handler Locacao
+    liftIO $ print locacao
     loc <- runDB $ insert locacao
     sendStatusJSON created201 (object ["resp" .= (fromSqlKey loc)])
 
@@ -33,12 +34,12 @@ getLocacaoCorretorBuscarR corid = do
     corretor <- runDB $ get404 corid
     sendStatusJSON ok200 (object ["resp" .= (toJSON corretor)])
 
-getLocacaoRetornoBuscarR :: UTCTime -> Handler Value
+getLocacaoRetornoBuscarR :: Day -> Handler Value
 getLocacaoRetornoBuscarR retorno = do
     retList <- runDB $ selectFirst [LocacaoDataRetorno==.retorno][]
     sendStatusJSON ok200(object ["resp".= (toJSON retList)])
     
-getLocacaoSaidaBuscarR :: UTCTime -> Handler Value
+getLocacaoSaidaBuscarR :: Day -> Handler Value
 getLocacaoSaidaBuscarR saida = do
     saidaList <- runDB $ selectFirst [LocacaoDataSaida==.saida][]
     sendStatusJSON ok200(object ["resp".= (toJSON saidaList)])
