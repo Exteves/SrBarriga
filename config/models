@@ -88,4 +88,3 @@ Locacao json
     seguroId        SeguroId
     clienteId       ClienteId
     deriving Show
-    
