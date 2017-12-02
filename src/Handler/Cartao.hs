@@ -21,4 +21,8 @@ getCartaoBuscarR cardid = do
     sendStatusJSON ok200 (object ["resp" .= (toJSON cartao)])
 
 putCartaoAlterarR :: CartaoId -> Handler Value
-putCartaoAlterarR = undefined
+putCartaoAlterarR cardid = do
+    _ <- runDB $ get404 cardid
+    novoCartao <- requireJsonBody :: Handler Cartao
+    runDB $ replace cardid novoCartao
+    sendStatusJSON noContent204 (object ["resp" .= (fromSqlKey cardid)])
