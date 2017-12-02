@@ -83,8 +83,9 @@ Unidade json
 Locacao json
     corretorId      CorretorId
     carroId         CarroId
-    dataSaida       UTCTime
-    dataRetorno     UTCTime
+    dataSaida       Day
+    dataRetorno     Day
     seguroId        SeguroId
     clienteId       ClienteId
     deriving Show
+    
