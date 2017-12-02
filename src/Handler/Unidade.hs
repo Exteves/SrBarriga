@@ -10,10 +10,19 @@ import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
 postUnidadeInsereR :: Handler Value
-postUnidadeInsereR = undefined
+postUnidadeInsereR = do
+    unidade <- requireJsonBody :: Handler Unidade
+    unid <- runDB $ insert unidade
+    sendStatusJSON created201 (object ["resp" .= (fromSqlKey unid)])
 
 getUnidadeBuscarR :: UnidadeId -> Handler Value
-getUnidadeBuscarR = undefined
+getUnidadeBuscarR unid = do
+    unidade <- runDB $ get404 unid
+    sendStatusJSON ok200 (object ["resp" .= (toJSON unidade)])
 
 putUnidadeAlterarR :: UnidadeId -> Handler Value
-putUnidadeAlterarR = undefined
+putUnidadeAlterarR unid = do
+    _ <- runDB $ get404 unid
+    novaUnidade <- requireJsonBody :: Handler Unidade
+    runDB $ replace unid novaUnidade
+    sendStatusJSON noContent204 (object ["resp" .= (fromSqlKey unid)])
