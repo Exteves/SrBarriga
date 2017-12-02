@@ -22,16 +22,17 @@ Endereco json
     cep             Text
     deriving Show
 Cartao json
-    numeroCartao    Text
+    nrCartao        Text
     validade        Text
     codigoSeguranca Text
     nomeImpresso    Text
+    UniqueCartao    nrCartao
     deriving Show
 Cliente json
     nome            Text
     cartaoId        CartaoId
     nacionalidade   Text
-    cpfCliente      Text
+    cpf             Text
     rg              Text
     sexo            Text
     email           Text
@@ -40,6 +41,9 @@ Cliente json
     validade        Text
     estadoEmissor   Text
     senha           Text
+    UniqueEmail     email
+    UniqueCnh       cnh
+    UniqueCpf       cpf     
     deriving Show
 Carro json
     placa           Text
@@ -49,6 +53,7 @@ Carro json
     km              Text
     vlDiaria        Text
     alugado         Bool
+    UniquePlaca     placa
     deriving Show
 Garagem json
     carroId         CarroId
@@ -61,6 +66,7 @@ Corretor json
     telefone        Text
     endereco        Text
     email           Text
+    UniqueCpfCor    cpfCorretor
     deriving Show
 Seguro json
     descSeguro      Text
