@@ -10,7 +10,12 @@ import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
 postSeguroInsereR :: Handler Value
-postSeguroInsereR = undefined
+postSeguroInsereR = do
+    seguro <- requireJsonBody :: Handler Seguro
+    segid <- runDB $ insert seguro
+    sendStatusJSON created201 (object ["resp" .= (fromSqlKey segid)])
 
 getSeguroBuscarR :: SeguroId -> Handler Value
-getSeguroBuscarR = undefined
+getSeguroBuscarR segid = do
+    seguro <- runDB $ get404 segid
+    sendStatusJSON ok200 (object ["resp" .= (toJSON seguro)])
