@@ -45,7 +45,10 @@ import Handler.Endereco
 import Handler.Unidade
 import Handler.Locacao
 import Handler.Seguro
-
+import Handler.Bairro
+import Handler.Pais
+import Handler.Cidade
+import Handler.Estado
 
 
 -- This line actually creates our YesodDispatch instance. It is the second half
