@@ -1,4 +1,3 @@
-/static StaticR Static appStatic
 
 /cliente/inserir                            ClienteInsereR          POST
 /cliente/nome/#ClienteId                    AlteraNomeR             PATCH
@@ -21,7 +20,14 @@
 /unidade/buscar/#UnidadeId                  UnidadeBuscarR          GET
 /unidade/alterar/#UnidadeId                 UnidadeAlterarR         PUT
 
+/pais/inserir                               PaisInsereR             POST
+/estado/inserir                             EstadoInsereR           POST
+/cidade/Inserir                             CidadeInsereR           POST
+/bairro/Inserir                             BairroInsereR           POST
+
 /cep/buscar/#Text                           CepBuscarR              GET
+/endereco/inserir                           EnderecoInsereR POST
+/endereco/buscar/#EnderecoId                EnderecoBuscarR GET
 /endereco/alterar/#EnderecoId               EnderecoAlterarR        PUT
 
 /seguro/inserir                             SeguroInsereR           POST
