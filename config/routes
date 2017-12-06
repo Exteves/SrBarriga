@@ -32,5 +32,6 @@
 /locacao/cliente/buscar/#ClienteId          LocacaoClienteBuscarR   GET
 /locacao/cartao/buscar/#CartaoId            LocacaoCartaoBuscarR    GET
 /locacao/corretor/buscar/#CorretorId        LocacaoCorretorBuscarR  GET
-/locacao/saida/buscar/#Day              LocacaoSaidaBuscarR     GET
-/locacao/retorno/buscar/#Day            LocacaoRetornoBuscarR   GET
+/locacao/saida/buscar/#Day                  LocacaoSaidaBuscarR     GET
+/locacao/retorno/buscar/#Day                LocacaoRetornoBuscarR   GET
+

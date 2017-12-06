@@ -37,7 +37,6 @@ Cliente json
     sexo            Text
     email           Text
     cnh             Text
-    nregistro       Text
     validade        Text
     estadoEmissor   Text
     senha           Text
@@ -72,13 +71,10 @@ Seguro json
     descSeguro      Text
     vlSeguro        Text
     deriving Show
-Locadora json
-    telefone        Text
-    email           Text
-    deriving Show
 Unidade json
     endereco        EnderecoId
-    locadora        LocadoraId
+    telefone        Text
+    email           Text
     deriving Show
 Locacao json
     corretorId      CorretorId

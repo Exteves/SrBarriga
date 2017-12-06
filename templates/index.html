@@ -1,0 +1,26 @@
+<html>
+<head>
+<script>
+var http = new XMLHttpRequest();
+var url = "https://haskbeta-romefeller.c9users.io/carro/inserir";
+http.open("POST", url, true);
+
+//Send the proper header information along with the request
+http.setRequestHeader("Content-type", "application/json");
+
+http.onreadystatechange = function () {
+    if (http.readyState === 4 && http.status === 200) {
+        var json = JSON.parse(http.responseText);
+        console.log(json.email + ", " + json.password);
+    }
+};
+
+var data = JSON.stringify({"placa" : "HYU-1542", "modelo" : "Hyundai HB20", "ano" : "2017" , "tanqueCheio" : true, "km" : "7.000", "vlDiaria" : "R$ 60,00", "alugado" : false });
+
+http.send(data);
+</script>
+</head>
+
+<body></body>
+
+</html>
