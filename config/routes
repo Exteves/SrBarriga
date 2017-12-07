@@ -1,3 +1,4 @@
+/static StaticR Static appStatic
 
 /cliente/inserir                            ClienteInsereR          POST
 /cliente/nome/#ClienteId                    AlteraNomeR             PATCH
@@ -40,4 +41,13 @@
 /locacao/corretor/buscar/#CorretorId        LocacaoCorretorBuscarR  GET
 /locacao/saida/buscar/#Day                  LocacaoSaidaBuscarR     GET
 /locacao/retorno/buscar/#Day                LocacaoRetornoBuscarR   GET
+
+
+
+
+
+
+
+
+
 
