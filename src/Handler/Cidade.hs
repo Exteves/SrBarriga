@@ -9,7 +9,6 @@ import Import
 import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
-
 postCidadeInsereR :: Handler Value
 postCidadeInsereR = do
     cidade <- requireJsonBody :: Handler Cidade
