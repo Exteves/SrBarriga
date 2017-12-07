@@ -84,4 +84,4 @@ Locacao json
     dataRetorno     Day
     seguroId        SeguroId
     clienteId       ClienteId
-    deriving Show
+    UniqueCorretorId    corretorId
