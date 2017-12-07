@@ -12,7 +12,6 @@ import Database.Persist.Postgresql
 postLocacaoInsereR :: Handler Value
 postLocacaoInsereR = do
     locacao <- requireJsonBody :: Handler Locacao
-    liftIO $ print locacao
     loc <- runDB $ insert locacao
     sendStatusJSON created201 (object ["Inserção feita no Id" .= (fromSqlKey loc)])
 
