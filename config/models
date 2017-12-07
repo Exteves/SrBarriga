@@ -42,7 +42,8 @@ Cliente json
     senha           Text
     UniqueEmail     email
     UniqueCnh       cnh
-    UniqueCpf       cpf     
+    UniqueCpf       cpf 
+    UniqueCartaoId    cartaoId
     deriving Show
 Carro json
     placa           Text
