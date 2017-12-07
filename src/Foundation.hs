@@ -12,6 +12,7 @@ import Prelude (reads)
 import Database.Persist.Sql (ConnectionPool, runSqlPool)
 import Yesod.Core.Types     (Logger)
 
+
 data App = App
     { appSettings    :: AppSettings
     , appStatic      :: Static 
@@ -22,10 +23,13 @@ data App = App
 
 mkYesodData "App" $(parseRoutesFile "config/routes")
 
+type Form a = Html -> MForm Handler (FormResult a, Widget)
+
 instance Yesod App where
     makeLogger = return . appLogger
+    
 
---type Form a = Html -> MForm Handler (FormResult a, Widget)
+
 
 instance YesodPersist App where
     type YesodPersistBackend App = SqlBackend
